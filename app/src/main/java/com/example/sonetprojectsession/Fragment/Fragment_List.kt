@@ -2,36 +2,49 @@ package com.example.sonetprojectsession.Fragment
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sonetprojectsession.R
 import com.example.sonetprojectsession.data.User
+import com.example.sonetprojectsession.data.UserData
+import com.example.sonetprojectsession.databinding.FragmentListBinding
 import com.example.sonetprojectsession.utility.UserListAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class Fragment_List :Fragment(R.layout.fragment_list){
+class Fragment_List :Fragment(){
+    var userAdapter = UserListAdapter()
+    lateinit var binding:FragmentListBinding
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        binding= FragmentListBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var add_btn = activity?.findViewById<FloatingActionButton>(R.id.floatingbtn_add)
-        add_btn?.setOnClickListener(View.OnClickListener {
+      //  var add_btn = activity?.findViewById<FloatingActionButton>(R.id.floatingbtn_add)
+        binding.floatingbtnAdd.setOnClickListener(View.OnClickListener {
             val fm=activity?.supportFragmentManager
             val ft=fm?.beginTransaction()
             ft?.replace(R.id.fragmet,FragmentAdd())
             ft?.commit()
         })
-        var rcv=activity?.findViewById<RecyclerView>(R.id.rcv)
-        var userListAdapter=UserListAdapter()
+       // var rcv=activity?.findViewById<RecyclerView>(R.id.rcv)
+
+
         Log.i("------>","test")
         var user= User(12,"Ram","Reddy",23)
 
+        binding.rcv.layoutManager=LinearLayoutManager(activity)
 
+        userAdapter.setUserData(UserData.userList)
 
-        userListAdapter.setUserData(listOf<User>(user))
-
-        rcv?.adapter=UserListAdapter()
+        binding.rcv.adapter=userAdapter
 
 
     }

@@ -18,6 +18,7 @@ class UserListAdapter:RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
+        Log.i("----->","onCreateViewHolder")
         return UserViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.custom_row,parent,false))
     }
 
@@ -41,6 +42,6 @@ class UserListAdapter:RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
         Log.i("------->","setUserData")
         userList= user
         notifyDataSetChanged()
-        Log.i("------>",userList.size.toString())
+       // Log.i("------>",userList.size.toString())
     }
 }
