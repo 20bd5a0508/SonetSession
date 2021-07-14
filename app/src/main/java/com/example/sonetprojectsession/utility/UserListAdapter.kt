@@ -13,9 +13,7 @@ import com.example.sonetprojectsession.data.User
 class UserListAdapter:RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
     var userList= emptyList<User>()
     class UserViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
-
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         Log.i("----->","onCreateViewHolder")
@@ -24,22 +22,24 @@ class UserListAdapter:RecyclerView.Adapter<UserListAdapter.UserViewHolder>() {
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
        var  currentPos=userList[position]
-       Log.i("------>",currentPos.toString())
-       var id=holder.itemView.findViewById<TextView>(R.id.id_txt)
-       id.text=currentPos.id.toString()
-        var firstname=holder.itemView.findViewById<TextView>(R.id.firstName_txt)
-        id.text=currentPos.firstname.toString()
-        var lastname=holder.itemView.findViewById<TextView>(R.id.lastName_txt)
-        id.text=currentPos.lastname.toString()
-        var age=holder.itemView.findViewById<TextView>(R.id.age_txt)
-        id.text=currentPos.age.toString()
+        var id = holder.itemView.findViewById<TextView>(R.id.id_txt)
+        id.text=currentPos.id.toString()
+
+        var firstname = holder.itemView.findViewById<TextView>(R.id.firstName_txt)
+        firstname.text=currentPos.firstname.toString()
+
+        var lastname = holder.itemView.findViewById<TextView>(R.id.lastName_txt)
+        lastname.text=currentPos.lastname.toString()
+
+        var age = holder.itemView.findViewById<TextView>(R.id.age_txt)
+        age.text=currentPos.age.toString()
     }
 
     override fun getItemCount(): Int {
         return userList.size
     }
     fun setUserData(user:List<User>){
-        Log.i("------->","setUserData")
+        //Log.i("------->","setUserData")
         userList= user
         notifyDataSetChanged()
        // Log.i("------>",userList.size.toString())

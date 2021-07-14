@@ -8,15 +8,15 @@ import com.example.sonetprojectsession.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding:ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-       val fm= supportFragmentManager
-        val ft=fm.beginTransaction()
-        ft.replace(R.id.fragmet,Fragment_List())
+        val fm = supportFragmentManager
+        val ft = fm.beginTransaction()
+        ft.replace(R.id.fragment,Fragment_List())
         ft.commit()
     }
 }
